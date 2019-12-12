@@ -1,20 +1,78 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<app-map (location)="getAddress($event)" [lat]="-0.180653" [lng]="-78.467834" [isEditing]="true"></app-map>
+<div class="container">
+    <form *ngIf="address">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtPais">País</label>
+                    <input type="text" class="form-control" id="txtPais" placeholder="" value="{{address.country}}"
+                        readonly>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtProvincia">Provincia</label>
+                    <input type="text" class="form-control" id="txtProvincia" placeholder="" value="{{address.state}}"
+                        readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtCiudad">Ciudad</label>
+                    <input type="text" class="form-control" id="txtCiudad" placeholder="" value="{{address.city}}"
+                        readonly>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtVecindario">Vecindario</label>
+                    <input type="text" class="form-control" id="txtVecindario" placeholder=""
+                        value="{{address.neighbourhood}}" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtCalle">Calle</label>
+                    <input type="text" class="form-control" id="txtCalle" placeholder="" value="{{address.road}}"
+                        readonly>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtSuburbio">Suburbio</label>
+                    <input type="text" class="form-control" id="txtSuburbio" placeholder="" value="{{address.suburb}}"
+                        readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtLatitud">Latitud</label>
+                    <input type="text" class="form-control" id="txtLatitud" placeholder="" value="{{address.latitude}}"
+                        readonly>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtLongitud">Longitud</label>
+                    <input type="text" class="form-control" id="txtLongitud" placeholder=""
+                        value="{{address.longitude}}" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="txtCodigo">Codigo Postal</label>
+                    <input type="text" class="form-control" id="txtCodigo" placeholder="" value="{{address.postcode}}"
+                        readonly>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-

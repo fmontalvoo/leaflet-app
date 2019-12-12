@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AddressModel } from './models/address.model';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'leaflet-app';
+  private address: AddressModel;
+
+  getAddress(address: AddressModel) {
+    this.address = address;
+  }
 }
