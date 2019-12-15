@@ -1,19 +1,19 @@
 <app-map (location)="getAddress($event)" [lat]="-0.180653" [lng]="-78.467834" [isEditing]="true"></app-map>
 <div class="container">
-    <form *ngIf="address">
+    <form *ngIf="getAdrs()">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label for="txtPais">País</label>
-                    <input type="text" class="form-control" id="txtPais" placeholder="" value="{{address.country}}"
-                        readonly>
+                    <input type="text" class="form-control" id="txtPais" placeholder=""
+                        value="{{getAdrs().getCountry()}}" readonly>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label for="txtProvincia">Provincia</label>
-                    <input type="text" class="form-control" id="txtProvincia" placeholder="" value="{{address.state}}"
-                        readonly>
+                    <input type="text" class="form-control" id="txtProvincia" placeholder=""
+                        value="{{getAdrs().getState()}}" readonly>
                 </div>
             </div>
         </div>
@@ -21,15 +21,15 @@
             <div class="col">
                 <div class="form-group">
                     <label for="txtCiudad">Ciudad</label>
-                    <input type="text" class="form-control" id="txtCiudad" placeholder="" value="{{address.city}}"
-                        readonly>
+                    <input type="text" class="form-control" id="txtCiudad" placeholder=""
+                        value="{{getAdrs().getCity()}}" readonly>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label for="txtVecindario">Vecindario</label>
                     <input type="text" class="form-control" id="txtVecindario" placeholder=""
-                        value="{{address.neighbourhood}}" readonly>
+                        value="{{getAdrs().getNeighbourhood()}}" readonly>
                 </div>
             </div>
         </div>
@@ -37,15 +37,15 @@
             <div class="col">
                 <div class="form-group">
                     <label for="txtCalle">Calle</label>
-                    <input type="text" class="form-control" id="txtCalle" placeholder="" value="{{address.road}}"
+                    <input type="text" class="form-control" id="txtCalle" placeholder="" value="{{getAdrs().getRoad()}}"
                         readonly>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label for="txtSuburbio">Suburbio</label>
-                    <input type="text" class="form-control" id="txtSuburbio" placeholder="" value="{{address.suburb}}"
-                        readonly>
+                    <input type="text" class="form-control" id="txtSuburbio" placeholder=""
+                        value="{{getAdrs().getSuburb()}}" readonly>
                 </div>
             </div>
         </div>
@@ -53,15 +53,15 @@
             <div class="col">
                 <div class="form-group">
                     <label for="txtLatitud">Latitud</label>
-                    <input type="text" class="form-control" id="txtLatitud" placeholder="" value="{{address.latitude}}"
-                        readonly>
+                    <input type="text" class="form-control" id="txtLatitud" placeholder=""
+                        value="{{getAdrs().getLatitude()}}" readonly>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label for="txtLongitud">Longitud</label>
                     <input type="text" class="form-control" id="txtLongitud" placeholder=""
-                        value="{{address.longitude}}" readonly>
+                        value="{{getAdrs().getlongitude()}}" readonly>
                 </div>
             </div>
         </div>
@@ -69,8 +69,8 @@
             <div class="col">
                 <div class="form-group">
                     <label for="txtCodigo">Codigo Postal</label>
-                    <input type="text" class="form-control" id="txtCodigo" placeholder="" value="{{address.postcode}}"
-                        readonly>
+                    <input type="text" class="form-control" id="txtCodigo" placeholder=""
+                        value="{{getAdrs().getPostcode()}}" readonly>
                 </div>
             </div>
         </div>

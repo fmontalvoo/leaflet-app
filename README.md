@@ -6,10 +6,10 @@ Para instalar leaftlet:
 
 En angular.json añadir:
 ```
-	"styles": [
-		....., 
-		{
-		   "input": "./node_modules/leaflet/dist/leaflet.css"
-		}
-	],
+"styles": [
+	....., 
+	{
+	   "input": "./node_modules/leaflet/dist/leaflet.css"
+	}
+],
 ```

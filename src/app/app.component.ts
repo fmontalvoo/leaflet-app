@@ -13,4 +13,8 @@ export class AppComponent {
   getAddress(address: AddressModel) {
     this.address = address;
   }
+
+  getAdrs(){
+    return this.address;
+  }
 }
