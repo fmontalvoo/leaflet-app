@@ -5,9 +5,11 @@ Para instalar leaftlet:
 * `npm install leaflet --save`
 
 En angular.json añadir:
+```
 	"styles": [
 		....., 
 		{
 		   "input": "./node_modules/leaflet/dist/leaflet.css"
 		}
 	],
+```
