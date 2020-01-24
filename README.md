@@ -1,3 +1,8 @@
+# Angular Map
+<p align="center">
+    <img src="img/mapa.png" />
+</p>
+
 Para crear el proyecto:
 * `ng new app_name`
 
