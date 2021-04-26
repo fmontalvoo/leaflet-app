@@ -19,10 +19,10 @@
     "@angular/platform-browser": "~11.2.11",
     "@angular/platform-browser-dynamic": "~11.2.11",
     "@angular/router": "~11.2.11",
-    "core-js": "^2.5.4",
-    "leaflet": "^1.6.0",
+    "core-js": "^2.6.12",
+    "leaflet": "^1.7.1",
     "rxjs": "~6.6.7",
-    "tslib": "^1.9.0",
+    "tslib": "^1.14.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -30,7 +30,7 @@
     "@angular/cli": "^11.2.10",
     "@angular/compiler-cli": "^11.2.11",
     "@angular/language-service": "~11.2.11",
-    "@types/jasmine": "~2.8.8",
+    "@types/jasmine": "^2.8.17",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
