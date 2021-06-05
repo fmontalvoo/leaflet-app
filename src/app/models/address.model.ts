@@ -44,10 +44,10 @@ export class AddressModel {
         return this.latitude;
     }
 
-    setlongitude(longitude: number) {
+    setLongitude(longitude: number) {
         this.longitude = longitude;
     }
-    getlongitude() {
+    getLongitude() {
         return this.longitude;
     }
 
@@ -91,7 +91,7 @@ export class AddressModel {
             city: this.getCity(),
             country: this.getCountry(),
             latitude: this.getLatitude(),
-            longitude: this.getlongitude(),
+            longitude: this.getLongitude(),
             neighbourhood: this.getNeighbourhood(),
             postcode: this.getPostcode(),
             road: this.getRoad(),

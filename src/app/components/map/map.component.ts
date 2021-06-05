@@ -119,7 +119,7 @@ export class MapComponent implements OnInit {
     this.address.setCity(data['address']['city']);
     this.address.setCountry(data['address']['country']);
     this.address.setLatitude(this.lat);
-    this.address.setlongitude(this.lng);
+    this.address.setLongitude(this.lng);
     this.address.setNeighbourhood(data['address']['neighbourhood']);
     this.address.setPostcode(data['address']['postcode']);
     this.address.setRoad(data['address']['road']);
