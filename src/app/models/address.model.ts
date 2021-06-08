@@ -14,8 +14,8 @@ export class AddressModel {
         road?: string, suburb?: string, state?: string) {
         this.city = city;
         this.country = country;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.latitude = latitude || 0.0;
+        this.longitude = longitude || 0.0;
         this.neighbourhood = neighbourhood;
         this.postcode = postcode;
         this.road = road;
@@ -38,14 +38,14 @@ export class AddressModel {
     }
 
     setLatitude(latitude: number) {
-        this.latitude = latitude;
+        this.latitude = latitude || 0.0;
     }
     getLatitude() {
         return this.latitude;
     }
 
     setLongitude(longitude: number) {
-        this.longitude = longitude;
+        this.longitude = longitude || 0.0;
     }
     getLongitude() {
         return this.longitude;

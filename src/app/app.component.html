@@ -1,6 +1,6 @@
 <app-map (location)="getAddress($event)" [lat]="-0.180653" [lng]="-78.467834" [isEditing]="true"></app-map>
 <div class="container">
-    <form *ngIf="getAdrs()">
+    <form *ngIf="getAdrs().getLatitude()">
         <div class="row">
             <div class="col">
                 <div class="form-group">

@@ -3,3 +3,21 @@
     <div id="map"></div>
   </div>
 </div>
+
+<div class="container">
+  <div class="row g-3">
+    <div class="col-md-11">
+      <input #txtBuscar type="text" class="form-control " placeholder="Buscar"
+        (keydown.enter)="searchLocation(txtBuscar.value)">
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary mb-3" (click)="searchLocation(txtBuscar.value)">Buscar</button>
+    </div>
+  </div>
+
+  <ol *ngIf="getPlaces()">
+    <li *ngFor="let place of getPlaces()" (click)="setLocation(place)">
+      {{place.getDisplayName()}}
+    </li>
+  </ol>
+</div>

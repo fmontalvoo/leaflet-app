@@ -6,7 +6,9 @@
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Map, tileLayer, Marker, icon } from 'leaflet';
+import { Map, tileLayer, Marker, LatLng, icon } from 'leaflet';
+
+import { PlaceModel } from 'src/app/models/place.model';
 import { AddressModel } from 'src/app/models/address.model';
 
 @Component({
@@ -16,7 +18,8 @@ import { AddressModel } from 'src/app/models/address.model';
 })
 export class MapComponent implements OnInit {
 
-  static TOKEN = 'b9f62d2bd99bbf';
+  static TOKEN: string = 'b9f62d2bd99bbf';
+  static URL: string = 'https://us1.locationiq.com/v1';
 
   private map: Map;
   private marcador: Marker;
@@ -29,11 +32,13 @@ export class MapComponent implements OnInit {
   @Output() private location: EventEmitter<AddressModel>;
 
   private address: AddressModel;
+  private places: Array<PlaceModel>;
 
 
   constructor() {
     this.location = new EventEmitter();
     this.address = new AddressModel();
+    this.places = new Array<PlaceModel>();
   }
 
   ngOnInit() {
@@ -46,6 +51,12 @@ export class MapComponent implements OnInit {
    * Inicializa todo el componente del mapa.
    */
   leafletMap() {
+
+    if (this.map) {
+      this.map.off();
+      this.map.remove();
+    }
+
     this.map = new Map('map').setView([this.lat, this.lng], this.zoom); //Inicializa al mapa.
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { //Carga la capa base para el mapa.
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -104,8 +115,8 @@ export class MapComponent implements OnInit {
    * @param lat -> Latitud.
    * @param lng -> Longitud.
    */
-  async  getLocationData(lat: number, lng: number) {
-    let url: string = `https://us1.locationiq.com/v1/reverse.php?key=${MapComponent.TOKEN}&lat=${lat}&lon=${lng}&format=json`;
+  async getLocationData(lat: number, lng: number) {
+    let url: string = `${MapComponent.URL}/reverse.php?key=${MapComponent.TOKEN}&lat=${lat}&lon=${lng}&format=json`;
     const response = await fetch(url);
     return await response.json();
   }
@@ -126,6 +137,58 @@ export class MapComponent implements OnInit {
     this.address.setSuburb(data['address']['suburb']);
     this.address.setState(data['address']['state']);
     this.location.emit(this.address);
+  }
+
+  /**
+   * Busca ubicaciones por su nombre y las agrega al arreglo de lugares.
+   * 
+   * @param query 
+   * @returns 
+   */
+  async searchLocation(query: string) {
+    if (!query) return;
+    this.places = [];
+    this.address = new AddressModel();
+    this.location.emit(this.address);
+    let url: string = `${MapComponent.URL}/search.php?key=${MapComponent.TOKEN}&q=${query}&format=json`;
+    const response = await fetch(url);
+    const data = await response.json();
+    data.forEach((res) => {
+      let place: PlaceModel = new PlaceModel(res['display_name'], res['lat'], res['lon'], res['type']);
+      this.places.push(place);
+    });
+  }
+
+  /**
+   * Setea la ubicacion selecionada en el mapa.
+   * 
+   * @param place 
+   * @returns 
+   */
+  setLocation(place: PlaceModel) {
+    if (!place) return;
+
+    this.lat = place.getLatitude();
+    this.lng = place.getLongitude();
+
+    this.leafletMap();
+
+    const latlng = new LatLng(this.lat, this.lng);
+    this.marcador.setLatLng(latlng);
+    this.marcador.addTo(this.map);
+
+    this.places = [];
+
+    this.getLocation();
+  }
+
+  /**
+   * Retorna una lista con los lugares.
+   * 
+   * @returns 
+   */
+  getPlaces() {
+    return this.places;
   }
 
 }
