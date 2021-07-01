@@ -79,7 +79,8 @@ export class MapComponent implements OnInit {
       this.marcador.addTo(this.map);
       this.marcador.bindPopup(`<a href="https://www.google.com/maps/?q=${this.lat},${this.lng}" target="_blank">Google Maps</a>`);
     } else {
-      this.marcador = new Marker([], { icon: this.icono });
+      this.marcador = new Marker([this.lat, this.lng], { icon: this.icono });
+      this.marcador.addTo(this.map);
       this.map.on('click', this.changeMakerLatLng);
       this.marcador.on('move', this.getMarkerLatLng);
     }
